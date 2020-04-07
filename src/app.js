@@ -23,7 +23,7 @@ function validateId(request, response, next) {
 
   request.repositoryIndex = repositoryIndex;
 
-  return next();
+  next();
 }
 
 app.use('/repositories/:id', validateId);
@@ -74,8 +74,11 @@ app.delete("/repositories/:id", (request, response) => {
 
 app.post("/repositories/:id/like", (request, response) => {
   // TODO
-  repositories[request.repositoryIndex].likes += 1;
-  return response.status(204).send();
+  const repository = repositories[request.repositoryIndex];
+  
+  repository.likes++;
+
+  return response.send(repository);
 });
 
 module.exports = app;
