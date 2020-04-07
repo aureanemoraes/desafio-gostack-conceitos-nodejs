@@ -23,7 +23,7 @@ function validateId(request, response, next) {
 
   request.repositoryIndex = repositoryIndex;
 
-  next();
+  return next();
 }
 
 app.use('/repositories/:id', validateId);
