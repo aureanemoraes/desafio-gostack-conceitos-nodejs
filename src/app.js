@@ -28,6 +28,7 @@ function validateId(request, response, next) {
 
 app.use('/repositories/:id', validateId);
 
+// Routes
 app.get("/repositories", (request, response) => {
   // TODO
   return response.json(repositories);
